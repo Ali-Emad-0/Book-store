@@ -1,0 +1,63 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/Sign In & Sign Up Pages Style.css' %}" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&display=swap"
+        rel="stylesheet" />
+    <title>Sign Up</title>
+</head>
+
+<body>
+    <script src="{% static 'js/Sign Up Page Script.js' %}"></script>
+
+    <div class="sign-in-page-container">
+        <h1>Hello New Reader!</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div class="input-group">
+                <img src="{% static 'icons/icons8-user-100.png' %}" alt="">
+                {{ form.username |attr:"placeholder:Username"}}
+            </div>
+
+            <div class="input-group">
+                <img src="{% static 'icons/icons8-email-100.png' %}" alt="">
+                {{ form.email |attr:"placeholder:Email" }}
+            </div>
+
+            <div class="input-group">
+                <img src="{% static 'icons/icons8-password-100.png' %}" alt="">
+                {{ form.password1 |attr:"placeholder:Password" }}
+            </div>
+
+            <div class="input-group">
+                <img src="{% static 'icons/icons8-password-100.png' %}" alt="">
+                {{ form.password2 |attr:"placeholder:Confirm Password" }}
+            </div>
+
+            <button class="sign-in-button" type="submit">Sign Up</button>
+        </form>
+        <div class="sign-in-page-text">
+            <p>Already have an account? <a href="{% url 'sign-in' %}">Sign In</a></p>
+            <div class="divider-with-text">
+                <hr>
+                <span>Or continue with</span>
+                <hr>
+            </div>
+            <div class="social-icons">
+                <img src="{% static 'icons/icons8-google-480.png' %}" alt="">
+                <img src="{% static 'icons/icons8-facebook-480.png' %}" alt="">
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
