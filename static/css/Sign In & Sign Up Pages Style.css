@@ -1,0 +1,153 @@
+body {
+    margin: 0;
+    background: #fdf6e3;
+    font-family: inherit;
+
+}
+
+.sign-in-page-container {
+    background: #d3d6d9;
+    border-radius: 32px;
+    width: 500px;
+    margin: auto;
+    margin-top: 35px;
+    padding: 32px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+}
+
+.sign-in-page-container h1 {
+    color: #5c6a71;
+    font-size: 2.8rem;
+    margin-bottom: 32px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #7c98a7;
+    border-radius: 19px;
+    padding: 0 16px;
+    margin-bottom: 24px;
+    width: 100%;
+    max-width: 350px;
+    font-weight: bold;
+}
+
+.input-group img {
+    width: 28px;
+    margin-right: 12px;
+}
+
+.input-group input {
+    border: none;
+    background: transparent;
+    color: #fdf6e3;
+    font-size: 1.2rem;
+    padding: 16px 0;
+    width: 100%;
+    outline: none;
+    font-family: inherit;
+    font-weight: bold;
+}
+
+.input-group input::placeholder {
+    color: #fdf6e3;
+    opacity: 50%;
+}
+
+.sign-in-button {
+    background: #a3a6c7;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 1.1rem;
+    margin: 1px 0 16px 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-weight: bold;
+    transition: background 0.4s, opacity 0.4s;
+    /* Smooth transition */
+}
+
+.sign-in-button:hover {
+    background: #8a8db0;
+    opacity: 1;
+}
+
+.sign-in-page-text {
+    text-align: center;
+    color: #5c6a71;
+    width: 100%;
+    font-weight: bold;
+}
+
+.sign-in-page-text a {
+    color: #5c6a71;
+    text-decoration: underline;
+    font-size: 1rem;
+}
+
+.sign-in-page-text hr {
+    border: none;
+    border-top: 2px solid #5c6a71;
+    width: 40%;
+    margin: 16px auto;
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    margin-top: 12px;
+}
+
+.social-icons img {
+    height: 48px;
+    /* Set a fixed height for both icons */
+    width: auto;
+    /* Maintain aspect ratio */
+    cursor: pointer;
+}
+
+.forgot-password {
+    width: 100%;
+    max-width: 350px;
+    text-align: right;
+    margin-top: -16px;
+    margin-bottom: 16px;
+}
+
+.forgot-password a {
+    color: #5c6a71;
+    text-decoration: underline;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.divider-with-text {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 350px;
+    margin: 16px auto;
+    color: #5c6a71;
+    font-size: 1.1rem;
+    gap: 12px;
+    font-weight: bold;
+}
+
+.divider-with-text hr {
+    flex: 1;
+    border: none;
+    border-top: 3px solid #5c6a71;
+    margin: 0;
+}
+
+.divider-with-text span {
+    white-space: nowrap;
+}

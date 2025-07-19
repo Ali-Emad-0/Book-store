@@ -1,0 +1,144 @@
+body {
+    background: #fdf6e3;
+    font-family: inherit;
+    margin: 0;
+}
+
+.payment-container {
+    background: #dcdcdc;
+    border-radius: 24px;
+    width: 500px;
+    margin: 48px auto;
+    padding: 32px 32px 24px 32px;
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+form {
+    width: 70%;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background: #7c98a7;
+    border-radius: 12px;
+    padding: 0 16px;
+    margin-bottom: 18px;
+    width: 100%;
+    min-height: 48px;
+    gap: 8px;
+    /* Add gap for spacing between input and icons */
+}
+
+.input-group input {
+    border: none;
+    background: transparent;
+    color: #fff;
+    font-size: 1.1rem;
+    padding: 14px 0;
+    width: 100%;
+    outline: none;
+    font-family: inherit;
+}
+
+.input-group input::placeholder {
+    color: #fff;
+    opacity: 0.5;
+}
+
+.card-icons .card-icon {
+    width: 32px;
+    height: 32px;
+    margin-left: 8px;
+}
+
+.card-icons-row {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+    margin-bottom: 18px;
+    margin-top: -10px;
+}
+
+.card-icon {
+    width: 32px;
+    height: 32px;
+    margin-left: 8px;
+}
+
+.input-row {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 0;
+}
+
+.divider-with-text {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin: 24px 0 18px 0;
+    color: #a3a6c7;
+    font-size: 1.2rem;
+    gap: 12px;
+}
+
+.divider-with-text hr {
+    flex: 1;
+    border: none;
+    border-top: 2px solid #a3a6c7;
+    margin: 0;
+    background: none;
+}
+
+.total-text {
+    font-family: 'EB Garamond', serif;
+    font-size: 1.5rem;
+    color: #a3a6c7;
+    font-weight: bold;
+    opacity: 0.8;
+}
+
+.total-amount {
+    color: #a3a6c7;
+    font-size: 1.5rem;
+    font-weight: bold;
+    opacity: 1;
+}
+
+.payment-btn {
+    background: #a3a6c7;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 0;
+    font-size: 1.1rem;
+    font-family: inherit;
+    font-weight: bold;
+    width: 110%;
+    margin-bottom: 12px;
+    cursor: pointer;
+    opacity: 0.9;
+    transition: background 0.3s, opacity 0.3s;
+}
+
+.payment-btn:hover {
+    background: #8a8db0;
+    opacity: 1;
+}
+
+.cancel-btn {
+    background: #a3a6c7;
+    color: #fff;
+}
+
+.cvv-row {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin-top: -10px;
+    margin-bottom: 18px;
+}
+
