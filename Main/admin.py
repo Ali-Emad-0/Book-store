@@ -1,16 +1,10 @@
 from django.contrib import admin
 from .models import Book, Category
 
-
-# Register your models here.
-
 @admin.register(Book)
-
 class BookAdmin(admin.ModelAdmin):
-    pass
-
+    filter_horizontal = ('category',)
 
 @admin.register(Category)
-
 class CategoryAdmin(admin.ModelAdmin):
     pass

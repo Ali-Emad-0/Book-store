@@ -25,7 +25,7 @@
       <input type="text" placeholder="What are you looking for?" />
     </div>
 
-    <a href="Sign In Page.html" target="_blank">
+    <a href="{% url 'sign-in' %}">
       <div class="signin-container">
         <button class="signin-button">
           <span class="signin-icon"></span> Sign In
@@ -70,11 +70,13 @@
       <div class="book-carousel" id="bookCarousel">
         {% for book in new_books %}
         <div class="book">
-          <img src="{{ book.image.url }}" alt="{{ book.title }}" />
+          <img src="{{ book.display_image }}" alt="{{ book.title }}" />
           <div class="overlay">
             <button>Buy Now</button>
             <button>Add To Cart</button>
-            <button>Details</button>
+            <a href="{% url 'book_details' book.title %}">
+              <button>Details</button>
+            </a>
           </div>
         </div>
         {% empty %}
@@ -93,11 +95,13 @@
       <div class="book-carousel" id="popularBookCarousel">
         {% for book in popular_books %}
         <div class="book">
-          <img src="{{ book.image.url }}" alt="{{ book.title }}" />
+          <img src="{{ book.display_image }}" alt="{{ book.title }}" />
           <div class="overlay">
             <button>Buy Now</button>
             <button>Add To Cart</button>
-            <button>Details</button>
+            <a href="{% url 'book_details' book.title %}">
+              <button>Details</button>
+            </a>
           </div>
         </div>
         {% empty %}
