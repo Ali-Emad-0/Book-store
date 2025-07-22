@@ -2,13 +2,19 @@ from django.shortcuts import render, redirect
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from .models import Book
 
 # Create your views here.
 from .forms import SignUpForm
 
 
 def home(request):
-    return render(request, 'Home Page.html')
+    new_books = Book.objects.filter(is_new=True)
+    popular_books = Book.objects.filter(is_popular=True)
+
+    return render(request, 'Home Page.html',{
+        'new_books':new_books, 'popular_books':popular_books
+    })
 
 def signup(request):
     if request.method == 'POST':
