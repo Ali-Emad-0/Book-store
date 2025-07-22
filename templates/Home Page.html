@@ -68,119 +68,18 @@
         <img src="{% static 'icons/icons8-left-arrow-100.png' %}" alt="" width="50px" />
       </button>
       <div class="book-carousel" id="bookCarousel">
+        {% for book in new_books %}
         <div class="book">
-          <img src="{% static 'images/2.jfif' %}" alt="Book 1" />
+          <img src="{{ book.image.url }}" alt="{{ book.title }}" />
           <div class="overlay">
             <button>Buy Now</button>
             <button>Add To Cart</button>
             <button>Details</button>
           </div>
         </div>
-        <div class="book">
-          <img src="{% static 'images/1.jfif' %}" alt="Book 2" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <div class="book">
-          <img src="{% static 'images/2.jfif' %}" alt="Book 1" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <div class="book">
-          <img src="{% static 'images/1.jfif' %}" alt="Book 2" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <div class="book">
-          <img src="{% static 'images/2.jfif' %}" alt="Book 1" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <div class="book">
-          <img src="{% static 'images/1.jfif' %}" alt="Book 2" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <div class="book">
-          <img src="{% static 'images/2.jfif' %}" alt="Book 1" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <div class="book">
-          <img src="{% static 'images/1.jfif' %}" alt="Book 2" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <div class="book">
-          <img src="{% static 'images/2.jfif' %}" alt="Book 1" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <div class="book">
-          <img src="{% static 'images/1.jfif' %}" alt="Book 2" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <div class="book">
-          <img src="{% static 'images/2.jfif' %}" alt="Book 1" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <div class="book">
-          <img src="{% static 'images/1.jfif' %}" alt="Book 2" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <div class="book">
-          <img src="{% static 'images/2.jfif' %}" alt="Book 1" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <div class="book">
-          <img src="{% static 'images/1.jfif' %}" alt="Book 2" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <!-- Add more book divs here -->
+        {% empty %}
+        <p style="color: white;">No new books available yet.</p>
+        {% endfor %}
       </div>
       <button class="arrow" onclick="scrollCarousel(this, 1)">
         <img src="{% static 'icons/icons8-right-arrow-100.png' %}" alt="" width="50px" />
@@ -191,33 +90,19 @@
       <button class="arrow" onclick="scrollCarousel(this, -1)">
         <img src="{% static 'icons/icons8-left-arrow-100.png' %}" alt="" width="50px" />
       </button>
-      <div class="book-carousel" id="bookCarousel">
+      <div class="book-carousel" id="popularBookCarousel">
+        {% for book in popular_books %}
         <div class="book">
-          <img src="{% static 'images/2.jfif' %}" alt="Book 1" />
+          <img src="{{ book.image.url }}" alt="{{ book.title }}" />
           <div class="overlay">
             <button>Buy Now</button>
             <button>Add To Cart</button>
             <button>Details</button>
           </div>
         </div>
-        <div class="book">
-          <img src="{% static 'images/1.jfif' %}" alt="Book 2" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <!-- repeat as before -->
-        <div class="book">
-          <img src="{% static 'images/2.jfif' %}" alt="Book 1" />
-          <div class="overlay">
-            <button>Buy Now</button>
-            <button>Add To Cart</button>
-            <button>Details</button>
-          </div>
-        </div>
-        <!-- ... -->
+        {% empty %}
+        <p style="color: white;">No popular books available yet.</p>
+        {% endfor %}
       </div>
       <button class="arrow" onclick="scrollCarousel(this, 1)">
         <img src="{% static 'icons/icons8-right-arrow-100.png' %}" alt="" width="50px" />
