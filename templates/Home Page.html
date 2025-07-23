@@ -74,7 +74,7 @@
           <div class="overlay">
             <button>Buy Now</button>
             <button>Add To Cart</button>
-            <a href="{% url 'book_details' book.title %}">
+            <a href="{% url 'book_details' book.slug %}">
               <button>Details</button>
             </a>
           </div>
@@ -99,7 +99,7 @@
           <div class="overlay">
             <button>Buy Now</button>
             <button>Add To Cart</button>
-            <a href="{% url 'book_details' book.title %}">
+            <a href="{% url 'book_details' book.slug %}">
               <button>Details</button>
             </a>
           </div>

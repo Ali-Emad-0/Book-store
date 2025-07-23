@@ -233,13 +233,14 @@ hr {
     opacity: 1;
 }
 
-/* ←←← CHANGE HERE to align content to the left */
+/* ✅ FIXED: Moved content to the right slightly while left-aligned */
 .book-details-center {
     display: flex;
-    justify-content: flex-start;  /* was center */
+    justify-content: flex-start;
     align-items: flex-start;
     gap: 40px;
     margin-top: 40px;
+    margin-left: 40px;  /* ← added this line to shift content right */
 }
 
 .similar-books {

@@ -44,7 +44,7 @@
         <a href="#">Funny</a>
     </nav>
 
-    <div class="book-details-center">
+    <div class="book-details-center" style="padding-left: 20px; gap: 30px; margin-top: 40px;">
         <img class="book-cover" src="{{ book.image.url }}" alt="{{ book.title }}" />
         <div class="book-info">
             <div class="book-title-row">
@@ -84,7 +84,7 @@
                 <div class="overlay">
                     <button>Buy Now</button>
                     <button>Add To Cart</button>
-                    <a href="{% url 'book_details' similar_book.title|slugify %}">
+                    <a href="{% url 'book_details' similar_book.slug%}">
                         <button>Details</button>
                     </a>
                 </div>

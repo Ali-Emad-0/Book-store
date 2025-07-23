@@ -3,6 +3,7 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from .models import Book
+from django.db.models import Q
 
 # Create your views here.
 from .forms import SignUpForm
@@ -16,9 +17,8 @@ def home(request):
         'new_books':new_books, 'popular_books':popular_books
     })
 
-def details(request, book_name):
-    book_title = book_name.replace('-', ' ')
-    book = get_object_or_404(Book, title=book_title)
+def details(request, slug):
+    book = get_object_or_404(Book,  slug=slug)
     similar_books = Book.objects.filter(category__in=book.category.all()).exclude(title = book.title).distinct()
     return render(request, 'Details Page.html', {'book': book, 'similar_books':similar_books})
 
