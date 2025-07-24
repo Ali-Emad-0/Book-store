@@ -3,3 +3,6 @@ function scrollCarousel(button, direction) {
   const scrollAmount = 900;
   container.scrollBy({ left: direction * scrollAmount, behavior: "smooth" });
 }
+
+
+

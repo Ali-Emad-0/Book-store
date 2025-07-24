@@ -1,43 +1,96 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 
-# Create your views here.
-from .forms import SignUpForm
+from .forms import SignUpForm, EditProfileForm, ChangePasswordForm
 
+# -------------------------------
+# Public Views
+# -------------------------------
 
 def home(request):
+    """Home page view."""
     return render(request, 'Home Page.html')
 
-def signup(request):
+
+def sign_up(request):
+    """Handles user registration."""
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
             messages.success(request, 'Account created successfully! You can now log in.')
-            return redirect('sign-in') 
+            return redirect('sign-in')
     else:
         form = SignUpForm()
-        
-    return render(request, 'Sign Up Page.html', {'form': form})
+
+    return render(request, 'Sign Up Page.html', {'sign_up_form': form})
 
 
-def signin(request):
+def sign_in(request):
+    """Handles user login by email and password."""
     if request.method == 'POST':
         email = request.POST.get('email')
         password = request.POST.get('password')
+
         try:
             user = User.objects.get(email=email)
             user = authenticate(request, username=user.username, password=password)
         except User.DoesNotExist:
             user = None
-        
 
         if user is not None:
             login(request, user)
             return redirect('home')
         else:
             messages.error(request, 'Invalid email or password')
-        
+
     return render(request, 'Sign In Page.html')
+
+
+# -------------------------------
+# Authenticated Views
+# -------------------------------
+
+@login_required
+def logout_user(request):
+    """Logs out the current user."""
+    logout(request)
+    return redirect('home')
+
+
+@login_required
+def user_profile(request):
+    """Renders the user's profile page."""
+    return render(request, 'Profile-page.html')
+
+
+@login_required
+def edit_profile(request):
+    """Handles profile editing."""
+    if request.method == 'POST':
+        form = EditProfileForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Profile updated successfully!')
+    else:
+        form = EditProfileForm(instance=request.user)
+
+    return render(request, 'edit_profile.html', {'edit_profile_form': form})
+
+
+@login_required
+def change_password(request):
+    """Allows user to change password."""
+    if request.method == 'POST':
+        change_password_form = ChangePasswordForm(user=request.user, data=request.POST)
+        if change_password_form.is_valid():
+            user = change_password_form.save()
+            update_session_auth_hash(request, user)  # Keep user logged in
+            messages.success(request, 'Password changed successfully!')
+    else:
+        change_password_form = ChangePasswordForm(user=request.user)
+
+    return render(request, 'change_password.html', {'change_password_form': change_password_form})

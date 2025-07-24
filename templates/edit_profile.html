@@ -1,0 +1,77 @@
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Page Title -->
+  <title>Edit Profile | Paper & Ink</title>
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="{% static 'css/Sign In & Sign Up Pages Style.css' %}" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <div class="sign-in-page-container">
+    
+    <!-- Profile Edit Form -->
+    <form method="POST">
+      {% csrf_token %}
+      <h1>Edit Profile</h1>
+
+      <!-- First Name Field -->
+      <div class="input-group">
+        <img src="{% static 'icons/icons8-user-100.png' %}" alt="First Name">
+        {{ edit_profile_form.first_name|attr:"placeholder:First name" }}
+      </div>
+
+      <!-- Last Name Field -->
+      <div class="input-group">
+        <img src="{% static 'icons/icons8-user-100.png' %}" alt="Last Name">
+        {{ edit_profile_form.last_name|attr:"placeholder:Last name" }}
+      </div>
+
+      <!-- Username Field -->
+      <div class="input-group">
+        <img src="{% static 'icons/icons8-user-100.png' %}" alt="Username">
+        {{ edit_profile_form.username|attr:"placeholder:Username" }}
+      </div>
+
+      <!-- Email Field -->
+      <div class="input-group">
+        <img src="{% static 'icons/icons8-email-100.png' %}" alt="Email">
+        {{ edit_profile_form.email|attr:"placeholder:Email" |attr:"required" }}
+      </div>
+
+      <!-- Submit Button -->
+      <button class="sign-in-button" type="submit">Save Changes</button>
+
+      <!-- Success/Error Messages -->
+      {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %} style="color: green;">
+              {{ message }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      <!-- Link Back to Home -->
+      <div class="sign-in-page-text">
+        <p><a href="{% url 'home' %}">Back to Home</a></p>
+      </div>
+    </form>
+    
+  </div>
+</body>
+
+</html>

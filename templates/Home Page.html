@@ -25,13 +25,24 @@
       <input type="text" placeholder="What are you looking for?" />
     </div>
 
-    <a href="Sign In Page.html" target="_blank">
-      <div class="signin-container">
-        <button class="signin-button">
-          <span class="signin-icon"></span> Sign In
-        </button>
-      </div>
+{% if user.is_authenticated %}      <!-- If the user is authenticated show logout and profile buttons  -->
+  <div class="signin-container">
+    <a href="{% url 'profile' %}">
+      <button class="signin-button" style="margin-top: 10px;">User Profile</button>
     </a>
+    <form method="post" action="{% url 'logout' %}">
+      {% csrf_token %}
+      <button class="signin-button" style="margin-top: 10px;">Log Out</button>
+    </form>
+  </div>
+{% else %}        <!-- Ielse show the default page with sign-in button--> 
+  <a href="{% url 'sign-in' %}">
+    <div class="signin-container">
+      <button class="signin-button">Sign In</button>
+    </div>
+  </a>
+{% endif %}
+
     <a href=""><span class="cart-icon"></span></a>
 
   </header>

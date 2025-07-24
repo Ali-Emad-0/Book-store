@@ -25,23 +25,36 @@
 
             <div class="input-group">
                 <img src="{% static 'icons/icons8-user-100.png' %}" alt="">
-                {{ form.username |attr:"placeholder:Username"}}
+                {{ sign_up_form.username |attr:"placeholder:Username"}}   
             </div>
+            {% for error in sign_up_form.username.errors %}
+                <p class="field-error" style="color: red;">{{ error }}</p> 
+            {% endfor %}
 
             <div class="input-group">
                 <img src="{% static 'icons/icons8-email-100.png' %}" alt="">
-                {{ form.email |attr:"placeholder:Email" }}
+                {{ sign_up_form.email |attr:"placeholder:Email" }}
             </div>
+            {% for error in sign_up_form.email.errors %}
+               <p class="field-error" style="color: red;">{{ error }}</p>
+            {% endfor %}
 
             <div class="input-group">
                 <img src="{% static 'icons/icons8-password-100.png' %}" alt="">
-                {{ form.password1 |attr:"placeholder:Password" }}
+                {{ sign_up_form.password1 |attr:"placeholder:Password" }}
+                
             </div>
+            {% for error in sign_up_form.password1.errors %}
+                <p class="field-error" style="color: red;">{{ error }}</p>
+            {% endfor %}
 
             <div class="input-group">
                 <img src="{% static 'icons/icons8-password-100.png' %}" alt="">
-                {{ form.password2 |attr:"placeholder:Confirm Password" }}
+                {{ sign_up_form.password2 |attr:"placeholder:Confirm Password" }}
             </div>
+            {% for error in sign_up_form.password2.errors %}
+                <p class="field-error" style="color: red;">{{ error }}</p>
+            {% endfor %}    
 
             <button class="sign-in-button" type="submit">Sign Up</button>
         </form>
