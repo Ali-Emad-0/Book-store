@@ -123,7 +123,6 @@ hr {
     margin-left: 25px;
 }
 
-
 .book-cover {
     width: 180px;
     height: 260px;
@@ -234,12 +233,14 @@ hr {
     opacity: 1;
 }
 
+/* ✅ FIXED: Moved content to the right slightly while left-aligned */
 .book-details-center {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: flex-start;
     gap: 40px;
     margin-top: 40px;
+    margin-left: 40px;  /* ← added this line to shift content right */
 }
 
 .similar-books {

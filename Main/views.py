@@ -1,8 +1,10 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from .models import Book
+from django.db.models import Q
 
 from .forms import SignUpForm, EditProfileForm, ChangePasswordForm
 
@@ -11,8 +13,17 @@ from .forms import SignUpForm, EditProfileForm, ChangePasswordForm
 # -------------------------------
 
 def home(request):
-    """Home page view."""
-    return render(request, 'Home Page.html')
+    new_books = Book.objects.filter(is_new=True)
+    popular_books = Book.objects.filter(is_popular=True)
+
+    return render(request, 'Home Page.html',{
+        'new_books':new_books, 'popular_books':popular_books
+    })
+
+def details(request, slug):
+    book = get_object_or_404(Book,  slug=slug)
+    similar_books = Book.objects.filter(category__in=book.category.all()).exclude(title = book.title).distinct()
+    return render(request, 'Details Page.html', {'book': book, 'similar_books':similar_books})
 
 
 def sign_up(request):
