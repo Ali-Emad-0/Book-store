@@ -1,0 +1,106 @@
+/* Base page styling */
+body {
+  margin: 0px;
+  background-color: #fdf6e3;
+  font-family: 'EB Garamond', Garamond, serif;
+}
+
+/* Container for all search content */
+.search-results-outer {
+  padding: 40px 5% 0 5%;
+  color: #72695a;
+}
+
+/* Title for the search page */
+.search-results-title {
+  font-size: 2rem;
+  margin-bottom: 30px;
+  color: #72695a;
+}
+
+/* Message if no results */
+.no-searched-results {
+  color: #ac7051;
+  font-size: 1.2em;
+  padding: 60px 0 0 0;
+  text-align: center;
+}
+
+/* Grid layout replacing horizontal carousel */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 30px;
+  padding: 10px;
+}
+
+/* Each book card */
+.book {
+  position: relative;
+  width: 160px;
+  height: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  margin: auto;
+}
+
+/* Book cover image */
+.book img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+/* Hover overlay showing buttons */
+.book:hover .overlay {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Overlay button area */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: all 0.3s ease;
+}
+
+/* Action buttons */
+.overlay button {
+  background: #fdf6e3;
+  border: 1px solid #aaa;
+  border-radius: 20px;
+  padding: 5px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #8da291;
+  font-family: inherit;
+  font-size: 16.5px;
+}
+
+.overlay button:hover {
+  background: #eee;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 700px) {
+  .search-results-outer {
+    padding: 15px 2% 0 2%;
+  }
+  .book {
+    width: 110px;
+    height: 170px;
+  }
+}

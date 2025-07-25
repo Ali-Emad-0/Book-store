@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Search Results | Paper & Ink{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/Searched Page Style.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="search-results-outer">
+  <h2 class="search-results-title">Search Results for "{{ query }}"</h2>
+
+  {% if results %}
+  <div class="book-grid">
+    {% for book in results %}
+    <div class="book">
+      <img src="{{ book.display_image }}" alt="{{ book.title }}" />
+      <div class="overlay">
+        <button>Buy Now</button>
+        <button>Add To Cart</button>
+        <a href="{% url 'book_details' book.slug %}">
+          <button>Details</button>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% else %}
+  <p class="no-searched-results">No books matched your search.</p>
+  {% endif %}
+</div>
+{% endblock %}

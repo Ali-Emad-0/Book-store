@@ -1,8 +1,11 @@
+from django.http import HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from mypyc.doc.conf import author
+
 from .models import Book
 from django.db.models import Q
 
@@ -25,6 +28,15 @@ def details(request, slug):
     similar_books = Book.objects.filter(category__in=book.category.all()).exclude(title = book.title).distinct()
     return render(request, 'Details Page.html', {'book': book, 'similar_books':similar_books})
 
+def searched(request):
+    query = request.GET.get('q')
+    resluts = []
+
+    if query:
+        results = Book.objects.filter(
+            Q(title__icontains=query)|Q(description__icontains=query)|Q(author__icontains=query)
+        ).distinct()
+    return render(request, 'Searched Page.html', {'query' : query, 'results' : results})
 
 def sign_up(request):
     """Handles user registration."""
