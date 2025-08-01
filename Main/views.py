@@ -4,8 +4,10 @@ from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from intake import recommend
 from mypyc.doc.conf import author
 
+from Ai.recommender.content_based_filtering import *
 from .models import Book
 from django.db.models import Q
 
@@ -25,12 +27,13 @@ def home(request):
 
 def details(request, slug):
     book = get_object_or_404(Book,  slug=slug)
-    similar_books = Book.objects.filter(category__in=book.category.all()).exclude(title = book.title).distinct()
+    similar_isbns = recommend_similar_books(book.isbn)
+    similar_books = Book.objects.filter(isbn__in = similar_isbns)
     return render(request, 'Details Page.html', {'book': book, 'similar_books':similar_books})
 
 def searched(request):
     query = request.GET.get('q')
-    resluts = []
+    results = []
 
     if query:
         results = Book.objects.filter(
